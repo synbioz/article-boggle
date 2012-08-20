@@ -1,7 +1,7 @@
 require './language'
 
 module Boggle
-  GRID_SIZE = 3
+  GRID_SIZE = 4
   NEIGHBORS = (0...GRID_SIZE).map do |i|
     (0...GRID_SIZE).map do |j|
       coords = [[i-1, j], [i, j-1], [i-1, j-1], [i+1, j],
