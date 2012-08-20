@@ -1,15 +1,17 @@
+require "algorithms"
+
 module Boggle
   class Dict
     def initialize(filepath)
       @filepath = filepath
-      @words = {}
-      f = File.open(filepath, "r")
-      f.each_line { |line| @words[line.chomp] = true if line.size > 3 }
-      f.close
+      @words = File.readlines(filepath).map(&:chomp)
     end
 
     def exists?(word)
-      @words[word] == true
+      @words.each do |w|
+        return (w == word ? :found : :prefix) if w.start_with?(word)
+      end
+      return :not_found
     end
 
     def to_s
