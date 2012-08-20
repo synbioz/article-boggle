@@ -2,11 +2,14 @@ module Boggle
   class Dict
     def initialize(filepath)
       @filepath = filepath
-      @words = File.readlines(filepath).map(&:chomp).delete_if{|w| w.size < 3}
+      @words = {}
+      f = File.open(filepath, "r")
+      f.each_line { |line| @words[line.chomp] = true if line.size > 3 }
+      f.close
     end
 
     def exists?(word)
-      @words.include?(word)
+      @words[word] == true
     end
 
     def to_s

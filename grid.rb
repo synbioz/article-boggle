@@ -1,7 +1,7 @@
 require './language'
 
 module Boggle
-  GRID_SIZE = 3
+  GRID_SIZE = 4
 
   class Grid
     attr_reader :lang, :matrix
