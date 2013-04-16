@@ -16,9 +16,9 @@ module Boggle
   class Grid
     attr_reader :lang, :word
 
-    def initialize(lang_sym)
+    def initialize(lang_sym, matrix=nil)
       @lang   = lang_sym
-      @matrix = (0...GRID_SIZE).map{(0...GRID_SIZE).map{Language.letter(@lang)}}
+      @matrix = matrix || (0...GRID_SIZE).map{(0...GRID_SIZE).map{Language.letter(@lang)}}
       @cursor = []
       @word   = ""
       @used   = (0...GRID_SIZE).map{ (0...GRID_SIZE).map{ false } }
